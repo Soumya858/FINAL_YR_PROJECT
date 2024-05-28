@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cancer Detection</title>
+    <meta charset="utf-8" />
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      .main {
+        background-color: #3b3b3b;
+      }
+
+      .top {
+        text-align: center;
+      }
+
+      .top1 {
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: #eeeeee;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .top2 {
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: #eeeeee;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: red;
+        width: 8vw;
+        margin-top: -1vw;
+      }
+
+      .line {
+        font-size: 6vw;
+        color: red;
+        /*margin-top:-0.1vw;*/
+      }
+
+      .lg {
+        width: 3vw;
+        height: 5vw;
+      }
+
+      #img.lg {
+        width: 50%;
+        height: 50%;
+      }
+
+      .title {
+        font-size: 1.2vw;
+        font-weight: bold;
+        color: #eeeeee;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: -5vw;
+      }
+
+      .nav {
+        text-align: center;
+        background-color: #5f5e5e;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        padding: 0.5vw;
+        padding-left: 38vw;
+      }
+
+      .nav ul li {
+        height: auto;
+        width: auto;
+        font-size: 0.9vw;
+        color: #e1e0e0;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        padding-top: 0.5vw;
+        padding-bottom: 0.5vw;
+      }
+
+      .nav ul li a {
+        font-size: 0.9vw;
+        color: #e1e0e0;
+        text-decoration: none;
+      }
+
+      .nav ul li:hover {
+        height: auto;
+        width: auto;
+        font-size: 0.9vw;
+        color: #e1e0e0;
+        background-color: #808080;
+        border-radius: 0.3vw;
+      }
+
+      .active {
+        height: auto;
+        width: auto;
+        font-size: 0.9vw;
+        color: #e1e0e0;
+        /* background-color: #808080; */
+        background-color: #5f5e5e;
+        border-radius: 0.3vw;
+      }
+
+      .content {
+        width: 100%;
+        background-color: #3b3b3b;
+        height: auto;
+        padding-bottom: 100px;
+      }
+
+      .container {
+        background-color: #5f5e5e;
+        width: 50%;
+        height: auto;
+        padding: 2vw;
+        text-align: justify;
+        text-align-last: left;
+        border-radius: 0.5vw;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .hline {
+        font-size: 1vw;
+        font-weight: 600;
+        color: #dedede;
+      }
+
+      .pera {
+        font-size: 0.9vw;
+        font-weight: 500;
+        color: #dedede;
+      }
+      .phline {
+        font-size: 1.2vw;
+        font-weight: 600;
+        color: #dedede;
+      }
+
+      .lb {
+        font-size: 0.9vw;
+        font-weight: 500;
+        color: #dedede;
+        font-family: Arial;
+      }
+
+      .tb2 {
+        width: 90%;
+        height: 1.5vw;
+        font-size: 0.9vw;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid #acaaaa;
+        border-radius: 0.3vw;
+
+        outline: none;
+        color: #dedede;
+        /*outline: 1px solid #02d133;*/
+      }
+      .tb2:hover {
+        width: 90%;
+        height: 1.5vw;
+        font-size: 0.9vw;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid #02d133;
+        border-radius: 0.3vw;
+
+        outline: none;
+        color: #dedede;
+        /*outline: 1px solid #02d133;*/
+      }
+
+      .area {
+        height: 4vw;
+      }
+
+      .tb3 {
+        width: 90%;
+        height: 1.5vw;
+        font-size: 0.9vw;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid #acaaaa;
+        border-radius: 0.3vw;
+        margin-bottom: 2px;
+        outline: none;
+        color: #dedede;
+        /*outline: 1px solid #02d133;*/
+      }
+      .tb3:hover {
+        width: 90%;
+        height: 1.5vw;
+        font-size: 0.9vw;
+        background-color: transparent;
+        /*border: 2px solid #dedede;*/
+        border-radius: 0.3vw;
+        margin-bottom: 2px;
+        /*outline:none;*/
+        border: 1px solid #02d133;
+        color: #dedede;
+      }
+
+      .table2 tr td {
+        border: 1px solid #acaaaa;
+        padding: 0.5vw;
+      }
+
+      .but {
+        width: 100%;
+        padding: 0.9vw;
+        font-size: 0.8vw;
+        outline: none;
+        border: none;
+      }
+      .green {
+        background-color: #64c371;
+        color: white;
+        text-align: center;
+      }
+      .green:hover {
+        background-color: #5ab066;
+        color: white;
+      }
+
+      #faq {
+        display: none;
+      }
+
+      #faq:target {
+        display: block;
+      }
+
+      #faq:target ~ #patient {
+        display: none;
+      }
+
+      #about {
+        display: none;
+      }
+      #about:target {
+        display: block;
+      }
+
+      #about:target ~ #patient {
+        display: none;
+      }
+
+      #over {
+        display: none;
+      }
+      #over:target {
+        display: block;
+      }
+      #over:target ~ #patient,
+      .hidden {
+        display: none;
+      }
+
+      #patient {
+        display: block;
+      }
+
+      .hidden {
+        display: none;
+        background-color: #5f5e5e;
+        width: 50%;
+        height: auto;
+        padding: 2vw;
+        text-align: justify;
+        text-align-last: left;
+        border-radius: 0.5vw;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top">
+        <center>
+          <table>
+            <tr>
+              <td>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="lg" />
+              </td>
+              <td><p class="line">|</p></td>
+              <td>
+                <p class="top1">EARLY MALIGNANCY<br />DETECTION OF TUMORS</p>
+                <p class="top2">USING ML</p>
+              </td>
+            </tr>
+          </table>
+
+          <p class="title">
+            A final year project by students of <br />
+            Academy Of Technology, 2020-24
+          </p>
+        </center>
+      </div>
+
+      <!-- <div class="nav">
+
+
+            <ul>
+                <li class="active"><a href="htmlPage2.html#over">Overview</a></li>
+                <li><a href="htmlPage2.html#about">About</a></li>
+                <li><a href="#">Patient Details</a></li>
+                <li><a href="htmlPage2.html#faq">FAQ</a></li>
+            </ul>
+
+
+        </div> -->
+
+      <div class="nav">
+        <ul>
+          <li class="active"><a href="#over">Overview</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="http://127.0.0.1:3434/">Patient Details</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <center>
+          <div id="over" class="container">
+            <p class="hline">Overview</p>
+
+            <p class="pera">
+              Welcome to our project on Early Detection of Malignancy with a Focus on Cancer Genomics using AI. Our
+              project aims to revolutionize cancer detection by leveraging the power of artificial intelligence and data
+              analysis. With the rising prevalence of cancer worldwide, early detection plays a crucial role in
+              improving patient outcomes and survival rates. By combining advanced machine learning algorithms with
+              markers associated with cancer, our platform seeks to provide early predictions of malignancy, enabling
+              timely interventions and personalized healthcare management.
+            </p>
+          </div>
+
+          <div id="about" class="container">
+            <p class="hline">About</p>
+            <p class="pera">
+              Our team of dedicated researchers and developers at Academy Of Technology has worked
+              tirelessly to develop a comprehensive web-based platform for early cancer detection. Led by Prof. Sumon
+              Goswami, our project focuses on bridging the gap between conventional diagnostic methods and cutting-edge
+              technology. Through extensive literature review and collaboration with medical experts, we have designed a
+              system that analyzes medical records, identifies early symptoms, and predicts the probability of
+              malignancy using ML algorithms.
+            </p>
+          </div>
+
+          <div id="faq" class="container">
+            <p class="hline">FAQ</p>
+
+            <ol class="pera">
+              <li>
+                How does the platform work? <br />
+                Our platform allows users to submit their medical reports, which are then analyzed by machine learning
+                algorithms trained on a vast dataset of cancer cases and other profiles. The algorithms identify
+                patterns and connections in the data to predict the likelihood of malignancy based on early symptoms and
+                markers.
+              </li>
+              <br />
+              <li>
+                Is the platform user-friendly?<br />
+                Yes, our platform is designed to be intuitive and user-friendly. Users can easily submit their medical
+                reports and receive predictions within minutes. We prioritize simplicity and clarity in presenting
+                results to ensure effective communication and decision-making.
+              </li>
+              <br />
+              <li>
+                How accurate are the predictions?<br />
+                While no prediction model is perfect, our platform strives for high accuracy by continuously refining
+                and updating the algorithms based on new data and research findings. Our goal is to provide users with
+                reliable predictions that can guide healthcare decisions and interventions.
+              </li>
+              <br />
+              <li>
+                Is the platform secure?<br />
+                Yes, we prioritize data security and confidentiality. Our platform adheres to strict privacy regulations
+                and employs robust encryption techniques to safeguard user data. We are committed to protecting the
+                privacy and confidentiality of our users' medical information.
+              </li>
+            </ol>
+          </div>
+
+          <div id="patient" class="container">
+            <table class="table1" style="width: 100%">
+              <tr style="width: 100%">
+                <td style="width: 40%">
+                  <form>
+                    <p class="phline">Patient Details</p>
+
+                    <p class="lb">Patient Name:</p>
+                    <input id="pName" type="text" class="tb2" />
+
+                    <p class="lb">Age:</p>
+                    <input id="age" type="text" class="tb2" />
+
+                    <p class="lb">Gender:</p>
+                    <select id="gender" class="tb2">
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Others</option>
+                    </select>
+
+                    <p class="lb">Guardian Name (Optional)</p>
+                    <input id="gName" type="text" class="tb2" />
+
+                    <p class="lb">Mobile:</p>
+                    <input id="mobile" type="text" class="tb2" />
+
+                    <p class="lb">Address:</p>
+                    <textarea id="address" rows="2" cols="20" class="tb2 area"></textarea>
+                  </form>
+                </td>
+                <td style="width: 60%">
+                  <p class="phline">Physical Parameters</p>
+                  <form action="/predict" method="post">
+                    <table class="table2">
+                      <tr>
+                        <td><p class="hline">Parameters</p></td>
+                        <td><p class="hline">Value</p></td>
+                      </tr>
+
+                      <tr>
+                        <td><label for="001" class="lb">Radius Mean</label></td>
+                        <td>
+                          <input placeholder="" name="rm" id="001" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="002" class="lb">Texture Mean</label></td>
+                        <td>
+                          <input placeholder="" name="tm" id="002" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="003" class="lb">Perimeter Mean</label></td>
+                        <td>
+                          <input placeholder="" name="pm" id="003" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="004" class="lb">Area Mean</label></td>
+                        <td>
+                          <input placeholder="" name="am" id="004" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="005" class="lb">Smoothness Mean</label></td>
+                        <td>
+                          <input placeholder="" name="sm" id="005" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="006" class="lb">Compactness Mean</label></td>
+                        <td>
+                          <input placeholder="" name="comm" id="006" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="007" class="lb">Concavity Mean</label></td>
+                        <td>
+                          <input placeholder="" name="conm" id="007" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="008" class="lb">Concave Points Mean</label></td>
+                        <td>
+                          <input placeholder="" name="cpm" id="008" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="009" class="lb">Symmetry Mean</label></td>
+                        <td>
+                          <input placeholder="" name="symm" id="009" type="text" class="tb3" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="010" class="lb">Fractal Dimension Mean:</label></td>
+                        <td>
+                          <input placeholder="" name="fdm" id="010" type="text" class="tb3" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td></td>
+                        <td>
+                          <button type="submit" class="but green">Predict</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="result" {% if not show_div %}class="hidden" {% endif %}>
+            <p class="phline">Malignancy Detection Result</p>
+
+            <p class="pera">{{pred}}</p>
+            <p class="pera">{{pred1}}</p>
+            <p class="pera">{{pred2}}</p>
+          </div>
+        </center>
+      </div>
+    </div>
+  </body>
+</html>
